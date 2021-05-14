@@ -1,1 +1,15 @@
 # CS479-GDM
+
+This research is based off of the information presented in *Hierarchical Attention Networks for Cyberbullying Detection on the Instagram Social Network*, written by Cheng et al., and the Instagram dataset collected by CU CyberSafety Research Center at University of Colorado - Boulder. In their paper, they mention that with the rise of social media, specifically Instagram, cyberbullying on these platforms are also on the rise. Due to this, they present the HANCD framework that mimics social media sessions and focus on the temporal dynamics of these sessions in order to improve cyberbullying detection on Instagram. These social media sessions are compreised of images and videos, a sewquence of comments, and other social media attributes. The HANCD framework models the “commonalities and differences” of cyberbullying detection and the time-intervals between these comments. The framework uses several elements that analyzes the text from the sessions at a word level and comment level. This is difficult because some words and phrases can have different meanings depending on the context of the social media session. 
+
+The previously mentioned dataset includes three files that contain data collected during these social media sessions. I uploaded these files into a pandas dataframe and adjusted the columns 'question1', 'question2', and 'likes' data types to be ints. Columns 'question1' and 'question2' determined if the session was either aggressive/non-aggressive or bullying/non-bullying. I changed the data type from strings to ints, with the aggressive and bullying instances being represented as 1s, and the non-aggressive and non-bullying instances being represented as 0s. 
+
+<img width="248" alt="Screen Shot 2021-05-14 at 12 19 14 AM" src="https://user-images.githubusercontent.com/55416366/118229898-05a1c700-b44a-11eb-9af4-cd752090e6ce.png">
+
+After converting all of the columns to int data types, I translated the dataframe to a NumPy array because NumPy arrays are faster, more compact, and consume less memory than Python lists. Next, I calculated the z-score normalization of the data. Z-score normalization is used to normalize data that takes care of outliers in the data. If the z-score is positive, the value is above the mean and if the z-score is negative, the value is below the mean. After running the z-score on the data, I observed that most of the z-scores were less than one point away from the mean. This shows that the data behaves as predicted and that there aren't many outliers within the data.
+
+<img width="965" alt="Screen Shot 2021-05-14 at 12 22 39 AM" src="https://user-images.githubusercontent.com/55416366/118230195-806ae200-b44a-11eb-94e5-9e957c468e26.png">
+
+I used K-Nearest Neighbor to graph the connectivity between the nodes in the dataset to determine the nearest neighbor of each point. Each file behaved similarly to each other and produced a sparse graph.
+
+<img width="332" alt="Screen Shot 2021-05-14 at 12 31 51 AM" src="https://user-images.githubusercontent.com/55416366/118231047-c96f6600-b44b-11eb-8110-33ad6f54ac0f.png">
